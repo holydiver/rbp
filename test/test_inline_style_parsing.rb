@@ -3,11 +3,6 @@ require '/home/enrique/rubys/book_code/rbp/test_unit_extensions'
 require '/home/enrique/rubys/book_code/rbp/ch01/prawn'
 
 class TestInlineStyleParsing < Test::Unit::TestCase
-  must "simply return the string if styles are not found" do
-    @pdf = Prawn::Document.new
-    assert_equal "Hello World", @pdf.parse_inline_styles("Hello World")
-  end
-
   must "parse italic tags" do
     @pdf = Prawn::Document.new
     assert_equal ["Hello ", "<i>", "Fine", "</i>", " World"],
