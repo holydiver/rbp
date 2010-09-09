@@ -11,7 +11,7 @@ class TestInlineStyleParsing < Test::Unit::TestCase
   must "parse italic tags" do
     @pdf = Prawn::Document.new
     assert_equal ["Hello ", "<i>", "Fine", "</i>", " World"],
-                  @pdf.parse_inline_styles("Hello <i>Fine</i> World")
+      @pdf.parse_inline_styles("Hello <i>Fine</i> World")
   end
 
   must "parse bold tags" do
@@ -24,5 +24,11 @@ class TestInlineStyleParsing < Test::Unit::TestCase
     @pdf = Prawn::Document.new
     assert_equal ["Hello ", "<i>", "Fine ", "<b>", "World", "</b>", "</i>"],
       @pdf.parse_inline_styles("Hello <i>Fine <b>World</b></i>")
+  end
+
+  must "not split out other tags than <i>, <b>, </i>, </b>" do
+    @pdf = Prawn::Document.new
+    assert_equal ["Hello <indigo>Ch", "</b>", "arl", "</b>", "ie</indigo>"],
+      @pdf.parse_inline_styles("Hello <indigo>Ch</b>arl</b>ie</indigo>")
   end
 end
