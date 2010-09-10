@@ -1,7 +1,19 @@
 module Prawn
-  class Document
-    def parse_inline_styles(text)
-      text.split( %r{(</?[ib]>)} ).delete_if { |x| x.empty? }
+  module Document
+    module Text
+      module StyleParser
+        extend self
+
+        TAG_PATTERN = %r{(</?[ib]>)}
+
+        def process(text)
+          text.split(TAG_PATTERN).delete_if { |x| x.empty? }
+        end
+
+        def style_tag?(text)
+          !!(text =~ TAG_PATTERN)
+        end
+      end
     end
   end
 end
