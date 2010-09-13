@@ -14,4 +14,23 @@ class LockBoxTest < Test::Unit::TestCase
       @lock_box.unlock("kitten")
     end
   end
+
+  must "not raise an error when a valid password is used" do
+    assert_nothing_raised do
+      @lock_box.unlock("secret")
+    end
+  end
+
+  must "prevent access to content by default" do
+    assert_raises(LockBox::UnauthorizedAccess) do
+      @lock_box.content
+    end
+  end
+
+  must "allow access to content when box is properly unlocked" do
+    assert_nothing_raised do
+      @lock_box.unlock("secret")
+      @lock_box.content
+    end
+  end
 end
