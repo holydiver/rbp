@@ -1,9 +1,5 @@
-require 'minitest/unit'
-require '/home/enrique/rubys/book_code/rbp/test_unit_extensions'
+require 'test_helpers'
 require '/home/enrique/rubys/book_code/rbp/ch01/blog'
-require 'time'
-require 'nokogiri'
-
 
 class BlogTest < Test::Unit::TestCase
 

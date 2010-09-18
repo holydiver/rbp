@@ -1,7 +1,5 @@
-require 'minitest/unit'
-require '/home/enrique/rubys/book_code/rbp/test_unit_extensions'
+require 'test_helpers'
 require '/home/enrique/rubys/book_code/rbp/ch01/questioner'
-require 'flexmock/test_unit'
 
 class QuestionerTest < Test::Unit::TestCase
 
@@ -50,4 +48,3 @@ class QuestionerTest < Test::Unit::TestCase
     @output.should_receive(:puts).with(string).once
   end
 end
-
