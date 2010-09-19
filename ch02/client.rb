@@ -13,4 +13,11 @@ class Client
   ensure
     socket.close
   end
+
+  def receive_message
+    socket = TCPSocket.new(@ip, @port)
+    response = socket.gets
+  ensure
+    socket.close
+  end
 end
