@@ -7,17 +7,23 @@ class Client
   end
 
   def send_message(msg)
+    connection do |socket|
+      socket.puts(msg)
+      socket.gets
+    end
+  end
+
+  def receive_message
+    connection { |socket| socket.gets }
+  end
+
+  private 
+
+  def connection
     socket = TCPSocket.new(@ip, @port)
-    socket.puts(msg)
-    response = socket.gets
+    yield(socket)
   ensure
     socket.close
   end
 
-  def receive_message
-    socket = TCPSocket.new(@ip, @port)
-    response = socket.gets
-  ensure
-    socket.close
-  end
 end
