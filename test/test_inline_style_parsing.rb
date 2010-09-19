@@ -1,4 +1,4 @@
-require 'test_helpers'
+require File.join(File.expand_path(File.dirname(__FILE__)), 'test_helpers')
 require '/home/enrique/rubys/book_code/rbp/ch01/prawn'
 
 class TestInlineStyleParsing < Test::Unit::TestCase
