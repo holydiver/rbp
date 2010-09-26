@@ -23,6 +23,14 @@ class Prawn::Document
       super
     end
   end
+
+  def font_size(size = nil)
+    return @font_size unless size
+    @font_size = size
+  end
+
+  alias_method :font_size=, :font_size
+
 end
 
 Prawn::Document.generate("shapes.pdf") do
