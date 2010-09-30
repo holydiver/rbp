@@ -24,7 +24,7 @@ class BlankSlate
       fail "Don't know how to reveal method '#{name}'" unless unbound_method
       define_method(name, unbound_method)
     end
-
-    instance_methods.each { |m| hide(m) }
   end
+
+  instance_methods.each { |m| hide(m) }
 end
