@@ -34,7 +34,7 @@ puts phrases.grep /\AEnrique Temes\z/
 puts "true" if "1234Foo"[/(\d*)Foo/, 1]
 puts "true" if "xFoo"[/(\d*)Foo/, 1]
 
-# + Quantifies indicates at least one
+# + Quantifier indicates at least one
 puts "true" if "xFoo"[/(\d+)Foo/, 1]
 
 # ? Quantifier indicates zero or one, always matches
