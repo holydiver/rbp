@@ -7,4 +7,5 @@ File.foreach(ARGV[0]) do |line|
 end
 
 temp.close
+FileUtils.cp(ARGV[0],"#{ARGV[0]}.bak")
 FileUtils.mv(temp.path,ARGV[0])

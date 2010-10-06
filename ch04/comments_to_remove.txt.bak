@@ -1,0 +1,14 @@
+# Some comments to remove
+# from a ruby program file
+class Foo
+  # Some useless comment
+  def a
+    true
+  end
+
+  #Some other useless comment
+  def b
+    false
+  end
+end
+
