@@ -1,0 +1,10 @@
+class Foo
+  def a
+    true
+  end
+
+  def b
+    false
+  end
+end
+
