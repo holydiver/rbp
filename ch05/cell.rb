@@ -1,22 +1,16 @@
+require File.dirname(__FILE__) + '/' + 'naivelazy'
+
 class Cell
-  
   FONT_HEIGHT = 10
   FONT_WIDTH  = 8
 
   def initialize(text)
     @text = text
+    @width = NaiveLazy::Promise.new { calculate_width }
+    @height = NaiveLazy::Promise.new { calculate_height }
   end
 
-  attr_accessor :text
-  attr_writer :width, :height
-
-  def width
-    @width ||= calculate_width
-  end
-
-  def height
-    @height ||= calculate_height
-  end
+  attr_accessor :text, :width, :height
 
   def to_s
     "Cell(#{width}x#{height})"
