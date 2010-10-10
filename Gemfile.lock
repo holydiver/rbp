@@ -3,6 +3,7 @@ GEM
   specs:
     blankslate (2.1.2.3)
     lazy (0.9.6)
+    memoizable (0.1.0)
 
 PLATFORMS
   ruby
@@ -10,3 +11,4 @@ PLATFORMS
 DEPENDENCIES
   blankslate
   lazy (= 0.9.6)
+  memoizable
