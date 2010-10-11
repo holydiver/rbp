@@ -20,7 +20,12 @@ def hex2rgb(hex)
   [r,g,b].map { |e| e.to_i(16) }
 end
 
-memoize :hex2rgb
+cache = Proc.new  do |colors, value|
+    r,g,b = value[0..1], value[2..3], value[4..5]
+    colors[value] = [r,g,b].map { |e| e.to_i(16) }
+  end
+
+memoize :hex2rgb, &cache
 
 def rgb2hex_manual_cache(rgb)
   @rgb2hex ||= Hash.new do |colors, value| 

@@ -1,5 +1,7 @@
 module Memoizable
-  def memoize( name, cache = Hash.new)
+  def memoize( name, &block )
+    cache = Hash.new(block)
+
     original = "__original__#{name}"
     
     ([Class, Module].include?(self.class) ? self : self.class).class_eval do
