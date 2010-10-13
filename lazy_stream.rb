@@ -16,16 +16,18 @@ module LazyStream
 
     def tail
       result = if @tail.is_a? Proc
-        @tail.call
+        @tail.call(head)
       else
         @tail
       end
 
-      result.filter(@filter) unless @filter.nil? or not result.is_a? self.class
+      unless result == @tail
+        result.filter(@filter) unless @filter.nil? or not result.is_a? self.class
 
-      result.transform(&@transformer) unless @transformer.nil? or not result.is_a? self.class
+        result.transform(&@transformer) unless @transformer.nil? or not result.is_a? self.class
+      end
 
-      result
+      @tail = result
     end
     alias_method :next, :tail
     
