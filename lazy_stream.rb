@@ -10,12 +10,22 @@ module LazyStream
     attr_reader  :head
     alias_method :current, :head
 
+    def head
+      @transformer.nil? ? @head : @transformer[@head]
+    end
+
     def tail
-      if @tail.is_a? Proc
+      result = if @tail.is_a? Proc
         @tail.call
       else
         @tail
       end
+
+      result.filter(@filter) unless @filter.nil? or not result.is_a? self.class
+
+      result.transform(&@transformer) unless @transformer.nil? or not result.is_a? self.class
+
+      result
     end
     alias_method :next, :tail
     
@@ -79,7 +89,33 @@ module LazyStream
     def limit!( max_depth = nil )
       enum_for(:each!, max_depth)
     end
-        
+
+    def filter(pattern=nil, &block)
+      @filter = pattern || block
+      
+      drop until matches_filter? @head
+
+      self
+    end
+
+    def transform( &transformer)
+      @transformer = transformer
+      
+      self
+    end
+
+    private
+
+    def matches_filter?(current)
+      case @filter
+      when nil
+        true
+      when Proc
+        @filter[current]
+      else
+        @filter === current
+      end
+    end
   end
 end
 
