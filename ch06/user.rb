@@ -8,6 +8,7 @@ class User
   attr_reader :applications
 
   def can_renew?
+    return false if applications.empty?
     applications.all? { |e| [:accepted, :rejected].include?(e.state) }
   end
 end
