@@ -2,6 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     blankslate (2.1.2.3)
+    faker (0.3.1)
     lazy (0.9.6)
     memoizable (0.1.0)
 
@@ -10,5 +11,6 @@ PLATFORMS
 
 DEPENDENCIES
   blankslate
+  faker
   lazy (= 0.9.6)
   memoizable
