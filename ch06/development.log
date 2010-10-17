@@ -1,0 +1,14 @@
+# Logfile created on 2010-10-17 09:02:45 -0400 by logger.rb/25413
+I, [2010-10-17T09:03:06.605426 #2296]  INFO -- : executing: '*' with ["5", "10"]
+I, [2010-10-17T09:03:06.606012 #2296]  INFO -- : executing: '/' with ["4", "3"]
+I, [2010-10-17T09:03:06.606380 #2296]  INFO -- : executing: '/' with ["3", "foo"]
+E, [2010-10-17T09:03:06.606508 #2296] ERROR -- : ArgumentError: invalid value for Float(): "foo"
+server_arithmetic.rb:16:in `Float'
+server_arithmetic.rb:16:in `/'
+server_arithmetic.rb:23:in `handle_request'
+server_arithmetic.rb:34:in `run'
+server_arithmetic.rb:43:in `<main>'
+I, [2010-10-17T09:03:06.606831 #2296]  INFO -- : executing: '*' with ["5", "7.2"]
+F, [2010-10-17T09:13:17.876793 #2389] FATAL -- : NameError: undefined local variable or method `sessions' for #<Server:0x000000020d3868>
+server_arithmetic.rb:34:in `run'
+server_arithmetic.rb:43:in `<main>'
