@@ -1,3 +1,6 @@
 # a/b.rb
-require File.dirname(__FILE__) + "/b/c"
-require File.dirname(__FILE__) + "/b/d"
+dir = File.dirname(__FILE__)
+$LOAD_PATH.unshift dir unless $LOAD_PATH.include? dir
+
+require 'b/c'
+require 'b/d'
